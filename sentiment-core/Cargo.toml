@@ -1,0 +1,14 @@
+[package]
+name = "sentiment-core"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+# risc0-zkp = { version = "0.14", default-features = false }
+risc0-zkvm = { git = "ssh://git@github.com/rsproule/risc0.git",  ver= "da02f36ee90d0154fe2638c74504c78ba9cf5d13", default-features = false, features = [
+    "std",
+] }
+sentiment = "0.1.1"

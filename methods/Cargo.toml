@@ -1,0 +1,10 @@
+[package]
+name = "methods"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+risc0-build = { git = "ssh://git@github.com/rsproule/risc0.git", ver = "da02f36ee90d0154fe2638c74504c78ba9cf5d13" }
+
+[package.metadata.risc0]
+methods = ["guest"]
