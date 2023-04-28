@@ -9,3 +9,4 @@ risc0-zkvm = { git = "ssh://git@github.com/rsproule/risc0.git", ver = "da02f36ee
 serde = "1.0"
 sentiment = "0.1.1"
 sentiment-core = { path = "../sentiment-core" }
+colored = "2.0.0"

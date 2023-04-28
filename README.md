@@ -14,10 +14,6 @@ If you could prove the inference of some sentiment analysis in zk, you could get
 
 This project uses the Risc Zero zkVM to generate a proof of correct computation of the sentiment results. This allows the smart contract to trust this input from off-chain and potentially take some interesting action on it.
 
-## Further work
-
-Next step here is to do more interesting machine learning inference inside of risc zero circuits and post it on chain!
-
 ## Try it yourself
 
 Clone the repo:
@@ -35,3 +31,7 @@ cargo run --release
 This takes approximately 5 mins on my m2 macbook pro.
 
 ![demo](./assets/demo.png)
+
+## Further work
+
+Next step here is to do more interesting machine learning inference inside of risc zero circuits and post it on chain!

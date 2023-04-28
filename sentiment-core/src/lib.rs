@@ -46,14 +46,15 @@ pub fn parse_result(analysis: Analysis, message_hash: Digest) -> Output {
 mod tests {
     #[test]
     fn test_sentiment() {
-        let result = super::analyze("wow risc zero is so cool. If only there was more people using it! Im so mad about that.".to_owned());
+        let message = "wow risc zero is so cool. so easy to use and exciting! Writing circuits by hand is terrible!".to_owned();
+        let result = super::analyze(message.clone());
         let output = super::parse_result(result, [0; 32].into());
         println!("result: {output:?}");
-        assert_eq!(output.positive_score, 500);
+        assert_eq!(output.positive_score, 900);
         assert_eq!(output.negative_score, 300);
-        assert_eq!(output.score, 200);
-        assert_eq!(output.positive_comparative, 25);
+        assert_eq!(output.score, 600);
+        assert_eq!(output.positive_comparative, 47);
         assert_eq!(output.negative_comparative, 15);
-        assert_eq!(output.comparative, 9);
+        assert_eq!(output.comparative, 31);
     }
 }
