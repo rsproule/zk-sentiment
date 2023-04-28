@@ -2,7 +2,7 @@ use colored::Colorize;
 use methods::{SENTIMENT_ELF, SENTIMENT_ID};
 use risc0_zkvm::serde::{from_slice, to_vec};
 use risc0_zkvm::{Executor, ExecutorEnv};
-use sentiment_core::{Output};
+use sentiment_core::Output;
 use std::time::Instant;
 
 fn main() {
@@ -26,6 +26,7 @@ fn main() {
         .verify(SENTIMENT_ID)
         .expect("Proven code should verify");
     println!("Sentiment output: {output:?}");
+    println!("Proof: {:?}", receipt.journal);
     display_result(msg.to_owned(), output);
 }
 
