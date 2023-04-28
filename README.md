@@ -28,7 +28,7 @@ Run the prover:
 cargo run --release
 ```
 
-This takes approximately 5 mins on my m2 macbook pro.
+This takes approximately 10 mins on my m2 macbook pro.
 
 ![demo](./assets/demo.png)
 
