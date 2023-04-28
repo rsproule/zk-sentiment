@@ -17,11 +17,11 @@ pub struct Output {
     pub comparative: u32,
     pub positive_words: Vec<String>,
     pub negative_words: Vec<String>,
-    // pub message_hash: Digest,
+    pub message_hash: Digest,
 }
 
-pub fn parse_result(analysis: Analysis) -> Output {
-    // seems to freak out when i try to serialize a float. Just multiply by 100 and cast to u32.
+pub fn parse_result(analysis: Analysis, message_hash: Digest) -> Output {
+    // r0 env::commit seems to freak out when i try to serialize a float. Just multiply by 100 and cast to u32.
     let pos_score = (analysis.positive.score * 100.0) as u32;
     let neg_score = (analysis.negative.score * 100.0) as u32;
     let score = (analysis.score * 100.0) as u32;
@@ -35,10 +35,10 @@ pub fn parse_result(analysis: Analysis) -> Output {
         score,
         positive_comparative: pos_comparative,
         negative_comparative: neg_comparative,
-        negative_words: analysis.positive.words,
-        positive_words: analysis.negative.words,
+        positive_words: analysis.positive.words,
+        negative_words: analysis.negative.words,
         comparative,
-        // message_hash,
+        message_hash,
     }
 }
 
@@ -47,7 +47,13 @@ mod tests {
     #[test]
     fn test_sentiment() {
         let result = super::analyze("wow risc zero is so cool. If only there was more people using it! Im so mad about that.".to_owned());
-        let output = super::parse_result(result);
+        let output = super::parse_result(result, [0; 32].into());
         println!("result: {output:?}");
+        assert_eq!(output.positive_score, 500);
+        assert_eq!(output.negative_score, 300);
+        assert_eq!(output.score, 200);
+        assert_eq!(output.positive_comparative, 25);
+        assert_eq!(output.negative_comparative, 15);
+        assert_eq!(output.comparative, 9);
     }
 }
